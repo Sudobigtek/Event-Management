@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
+import type { JSX } from 'react';
 
-const Dashboard = () => {
+const Dashboard: FC = () => {
   return (
     <div className="space-y-8">
       <h1 className="text-3xl font-bold">Dashboard</h1>
