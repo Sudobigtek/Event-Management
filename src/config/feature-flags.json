@@ -1,0 +1,8 @@
+{
+  "features": {
+    "enableVoting": true,
+    "enableTicketing": true,
+    "enablePayments": true,
+    "enableAdminPanel": true
+  }
+}

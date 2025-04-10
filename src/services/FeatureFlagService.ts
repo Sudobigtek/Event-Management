@@ -1,21 +1,11 @@
-import * as featureFlags from '../../config/feature-flags.json';
-
-interface FeatureFlags {
-  [key: string]: boolean;
-}
+import featureFlags from "@/config/feature-flags.json";
 
 export class FeatureFlagService {
   private static instance: FeatureFlagService;
-  private features: FeatureFlags = {};
+  private flags: Record<string, boolean>;
 
-  private constructor() {
-    this.loadFeatures();
-  }
-
-  private loadFeatures(): void {
-    Object.entries(featureFlags.features).forEach(([key, value]) => {
-      this.features[key] = value.enabled;
-    });
+  constructor() {
+    this.flags = featureFlags.features;
   }
 
   public static getInstance(): FeatureFlagService {
@@ -25,8 +15,8 @@ export class FeatureFlagService {
     return FeatureFlagService.instance;
   }
 
-  public isEnabled(featureName: string): boolean {
-    return Boolean(this.features[featureName]);
+  public isEnabled(flag: string): boolean {
+    return !!this.flags[flag];
   }
 }
 
