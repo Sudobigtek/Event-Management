@@ -1,37 +1,82 @@
+import { Timestamp } from 'firebase/firestore';
+
 export interface User {
   id: string;
   email: string;
-  name: string;
-  avatar_url?: string;
-  created_at: string;
+  displayName: string;
+  photoURL?: string;
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
 }
 
 export interface Event {
   id: string;
   title: string;
   description: string;
-  date: string;
-  location: string;
+  venue: string;
+  startDate: Timestamp;
+  endDate: Timestamp;
+  category: string;
+  bannerImage?: string;
+  creatorId: string;
+  status: 'draft' | 'published';
+  attendanceCount: number;
+  maxAttendees?: number;
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
+}
+
+export interface Ticket {
+  id: string;
+  eventId: string;
+  name: string;
+  description?: string;
   price: number;
-  capacity: number;
-  organizer_id: string;
-  created_at: string;
+  quantity: number;
+  remaining: number;
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
+}
+
+export interface Order {
+  id: string;
+  userId: string;
+  ticketId: string;
+  quantity: number;
+  totalAmount: number;
+  status: 'pending' | 'completed' | 'cancelled';
+  paymentMethod: 'paystack' | 'crypto';
+  paymentReference?: string;
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
 }
 
 export interface Vote {
   id: string;
-  contest_id: string;
-  contestant_id: string;
-  voter_id: string;
-  created_at: string;
+  eventId: string;
+  userId: string;
+  contestId: string;
+  nomineeId: string;
+  createdAt: Timestamp;
 }
 
-export interface Award {
+export interface Nominee {
   id: string;
+  contestId: string;
+  name: string;
+  description?: string;
+  imageUrl?: string;
+  votes: number;
+}
+
+export interface Contest {
+  id: string;
+  eventId: string;
   title: string;
   description: string;
-  category: string;
-  nomination_start: string;
-  nomination_end: string;
-  created_at: string;
+  startDate: Timestamp;
+  endDate: Timestamp;
+  status: 'draft' | 'active' | 'completed';
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
 }
