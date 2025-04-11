@@ -1,4 +1,6 @@
-export * from "./AuthService";
 export * from "./PaymentService";
-export * from "./EventService";
 export * from "./FeatureFlagService";
+export * from "./ClientConfigService";
+
+// Type exports
+export type { PaymentDetails, PaymentResponse } from "./PaymentService";

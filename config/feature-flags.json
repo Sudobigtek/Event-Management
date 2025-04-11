@@ -1,9 +1,0 @@
-{
-  "features": {
-    "gemini2Flash": {
-      "enabled": true,
-      "description": "Enable Gemini 2.0 Flash for all clients",
-      "defaultValue": true
-    }
-  }
-}
